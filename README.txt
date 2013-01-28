@@ -11,6 +11,7 @@ fix.py:
 
 fix.cs:
 * C# implementation that requires .NET Runtime environment
+* fix.exe is a build using Mono on my Linux machine (I ran it on a WinXP VM and it works out of the box)
 * works using the config.xml file. Run it once to generate an example file
 
 Note:
