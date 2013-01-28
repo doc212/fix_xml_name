@@ -1,38 +1,36 @@
 #!/usr/bin/env python
 
-#######################################################
-# CONFIG SECTION
-######################################################
+try:
+	#######################################################
+	# CONFIG SECTION
+	# (Don't forget to respect indentation)
+	######################################################
 
-#list of filenames to treat
-files_to_treat=[
-	"example.xml",
-]
+	#list of filenames to treat: [ "f1.xml", "f2.xml", ... ]
+	files_to_treat=[ "example.xml" ]
 
-#set the folder where the output files will be saved
-#it will be created if needed (parents included)
-output_folder="output"
+	#set the folder where the output files will be saved
+	#it will be created if needed (parents included)
+	output_folder="output"
 
-#list the tags whose name attribute must be replaced
-tags_to_treat=[
-	"crosstab",
-	"image",
-	"text",
-	"table",
-	"some_tag",
-]
+	#list the tags whose name attribute must be replaced
+	tags_to_treat=[
+		"crosstab",
+		"image",
+		"text",
+		"table",
+	]
 
-#set this to True if you want to treat tags that don't have a name attribute
-#i.e. if you want a name attribute to be added if missing
-treat_tags_without_name_attribute = False
+	#set this to True if you want to treat tags that don't have a name attribute
+	#i.e. if you want a name attribute to be added if missing
+	treat_tags_without_name_attribute = False
 
-#initial value of the counter
-start_counting_from=1
+	#initial value of the counter
+	start_counting_from=1
 
 ##########################################################
 # END OF CONFIG, CODE STARTS HERE
 ##########################################################
-try:
 	import lxml.etree
 	import os
 	if not os.path.exists(output_folder):
