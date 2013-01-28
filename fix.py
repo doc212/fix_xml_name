@@ -10,6 +10,7 @@ files_to_treat=[
 ]
 
 #set the folder where the output files will be saved
+#it will be created if needed (parents included)
 output_folder="output"
 
 #list the tags whose name attribute must be replaced
@@ -35,9 +36,11 @@ try:
 	import lxml.etree
 	import os
 	if not os.path.exists(output_folder):
-		os.mkdir(output_folder)
+		print "creating output_folder:", output_folder
+		os.makedirs(output_folder)
 
 	for fname in files_to_treat:
+		print "processing file", fname
 		#load the xml file
 		xml_doc=lxml.etree.parse(fname)
 
@@ -64,8 +67,10 @@ try:
 			output_folder,
 			os.path.basename(fname)
 		)
+		print "saving file",output_filename
 		with open(output_filename,"w") as output:
 			output.write(lxml.etree.tostring(xml_doc))
+	print "done"
 except:
 	import traceback
 	import sys
