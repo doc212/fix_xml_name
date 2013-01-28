@@ -4,6 +4,8 @@ try:
 	#######################################################
 	# CONFIG SECTION
 	# (Don't forget to respect indentation)
+	# works with python 2.6.x, probably with 2.7
+	# probably not with 3.x
 	######################################################
 
 	#list of filenames to treat: [ "f1.xml", "f2.xml", ... ]
