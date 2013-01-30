@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Collections.Generic;
@@ -61,7 +62,10 @@ public class Program
 
 			XmlDocument doc=new XmlDocument();
 			doc.PreserveWhitespace=true;
-			doc.Load(filename);
+			using(StreamReader reader=new StreamReader(filename, config.GetEncoding()))
+			{
+				doc.Load(reader);
+			}
 
 			ResetCountsByTag(config.TagsToFix());
 
@@ -84,7 +88,15 @@ public class Program
 
 			string output = Path.Combine(config.output_folder, Path.GetFileName(filename));
 			Console.WriteLine("saving file {0}", output);
-			doc.Save(output);
+			using(StreamWriter stream=new StreamWriter(output, false, config.GetEncoding()))
+			{
+				XmlWriterSettings settings=new XmlWriterSettings();
+				settings.OmitXmlDeclaration=true;
+				using(XmlWriter writer=XmlWriter.Create(stream, settings))
+				{
+					doc.Save(writer);
+				}
+			}
 		}
 	}
 
@@ -166,6 +178,12 @@ public class Config
 	};
 
 	public string output_folder="output";
+	public string encoding="latin1";
+
+	public Encoding GetEncoding()
+	{
+		return Encoding.GetEncoding(encoding);
+	}
 
 	private Dictionary<string, string> _mappings;
 	public void Init()
