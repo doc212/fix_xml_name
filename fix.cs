@@ -60,6 +60,7 @@ public class Program
 			Console.WriteLine("processing {0}", filename);
 
 			XmlDocument doc=new XmlDocument();
+			doc.PreserveWhitespace=true;
 			doc.Load(filename);
 
 			ResetCountsByTag(config.TagsToFix());
