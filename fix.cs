@@ -214,6 +214,14 @@ public class Config
 			}
 			_mappings[tagToDelete]=null;
 		}
+		try
+		{
+			GetEncoding();
+		}
+		catch
+		{
+			throw new ConfigError("invalid encoding : '"+encoding+"'");
+		}
 	}
 
 	public bool MustTreatTag(string tagName)
