@@ -1,10 +1,10 @@
 <crosstab name="foo">
 	<table name="bar"/>
 	<image name="foobar">
-		<text name="blabla"/>
-		<text name="bobo"/>
-		<text name="poio"></text>
+		<textItem />
+		<textItem name="bobo"/>
+		<textItem name="poio"></textItem>
 		<some_tag name="lkmlk"/>
-		<text info="no name attribute so skipped"/>
+		<textItem info="no name attribute so skipped"/>
 	</image>
 </crosstab>
